@@ -1,0 +1,89 @@
+import java.util.Arrays;
+
+public class ArrayFunctions {
+    static char x = 'j'; //ASCII value (i.e. Decimal) of j is 106
+    static int y = 7;
+    public static void main(String[] args) {
+
+            System.out.println(y+x);
+
+        //ARRAY DECLARATION TYPES
+        //int k = 17;
+        //int[] intArray = new int[7];                  //METHOD 1
+        //int[] intArray = new int[]{1,2,3,4,5,6,7};    //METHOD 2   //BEST
+        //int[] intArray = {1928,2893,3,4,5,6,0};       //METHOD 3
+        //int[] intArray;                               //METHOD 4
+        //intArray = new int[7];
+
+//        int[] bArray = {90,10,58,72,33,0,-4,8,7,6,5,4,3,2,1};
+//        System.out.println("Original Array Address: " + bArray);
+//        System.out.print("Original Array: ");
+//
+//        for(int i = 0;i<bArray.length;i++)
+//            System.out.print(bArray[i] + " ");
+
+        //System.out.print(Arrays.toString(bArray));
+//        System.out.println(" , with array length = " + bArray.length);
+//        //CLONE COMPLETE ONE OBJECT TO ANOTHER - CLONE() CAN BE USED FOR ANY TYPE OF OBJECT BUT IS SHALLOW COPY
+//        int[] cloneArray = bArray.clone();
+//        System.out.print("Cloned Object: ");
+//        System.out.println(Arrays.toString((cloneArray)));
+//
+//        //COPY COMPLETE ONE ARRAY TO ANOTHER
+//        int[] copyOfArray = Arrays.copyOf(bArray, bArray.length);
+//        System.out.print("Copied Array: ");
+//        System.out.println(Arrays.toString(copyOfArray));
+//
+//        //BINARY SEARCH
+//        Arrays.sort(bArray);
+//        System.out.print("Sorted Array: ");
+//        System.out.println(Arrays.toString(bArray));
+//        System.out.println("Searched element is at location: " + (Arrays.binarySearch(bArray, -4) + 1));
+//
+//        //FILL ARRAY WITH SOME VALUE
+//        Arrays.fill(copyOfArray, 100);
+//        System.out.println(Arrays.toString(copyOfArray));
+
+        //2-DIMENSIONAL ARRAY
+//        int[][] my2DArray = new int[][]
+//                {
+//                        { 1,  2,  3,  4,  5,  6},
+//                        {11, 22, 33, 44, 55, 66,77},
+//                        { 222, 333, 444, 555, 666,777}
+//
+//                };
+//        int value = 99;
+//        System.out.println();
+//        System.out.println();
+
+        //System.out.println(Arrays.deepToString(my2DArray));
+
+        //boolean isFound = false;
+        //TRAVERSING 2-D ARRAY
+        //my2DArray.length
+//        for(int i=0;i < my2DArray.length;i++)
+//        {
+//            //my2DArray[i].length
+//            for(int j=0;j< my2DArray[i].length;j++)
+//            {
+//                System.out.print(my2DArray[i][j] + " ");
+//                if(my2DArray[row][column] == value)
+//                {
+//                    System.out.println("Row Number : " + (row + 1) + " Column Number : " + (column + 1));
+//                    isFound = true;
+//                    break;
+//                }
+
+                //System.out.print(my2DArray[row][column] + " ");
+//            }
+//
+//            System.out.println();
+//        }
+//        if (isFound == false)
+//        {
+//            System.out.println("Value not found");
+//        }
+
+    }
+ }
+
