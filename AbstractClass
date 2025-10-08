@@ -1,0 +1,65 @@
+abstract class figure {
+    private int dim1;
+    private int dim2;
+
+    figure(int dim1,int d2)
+    {
+        this.dim1 = dim1;
+        this.dim2 = d2;
+    }
+    int getDim1()
+    {
+        return dim1;
+    }
+    int getDim2()
+    {
+        return dim2;
+    }
+    abstract void area();
+    final void print()
+    {
+        System.out.println(dim1+dim2);
+    }
+}
+
+abstract class triangle extends figure
+{
+    triangle(int b, int h)
+    {
+        super(b,h);
+    }
+    void area()
+    {
+        System.out.println((0.5)*getDim1()*getDim2());
+    }
+
+}
+class rectangle extends figure{
+    rectangle(int l,int b)
+    {
+        super(l,b);
+    }
+    void area()
+    {
+        System.out.println(getDim1()*getDim2());
+    }
+
+}
+
+class DemoOfAbstractClass {
+     public static void main(String[] args) {
+        rectangle rObj = new rectangle(10,20);
+        triangle tObj =null;
+        //args[0] = "121";
+//        rObj.area();
+//        tObj.area();
+        String[] stringArray = {"Bob", "John"};
+        figure fObj = rObj;
+        fObj.area();
+        fObj.print();
+
+        fObj = tObj;
+        fObj.print();
+        fObj.area();
+    }
+}
