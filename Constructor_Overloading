@@ -1,0 +1,35 @@
+class DemoOfConstructorOverloading {
+    int numA;
+    int numB;
+
+    DemoOfConstructorOverloading() {
+        numB = -5;
+        numA = -5;
+    }
+    DemoOfConstructorOverloading(int a, int b)
+    {
+        numA = a;
+        numB = b;
+    }
+    void setValues(int a, int b)
+    {
+        numA = a;
+        numB = b;
+    }
+    void add()
+    {
+
+        System.out.println(numA+numB);
+    }
+
+}
+class myAddMain{
+    public static void main(String[] args) {
+        DemoOfConstructorOverloading numbersM = new DemoOfConstructorOverloading();
+        numbersM.add();
+
+        DemoOfConstructorOverloading numberN = new DemoOfConstructorOverloading();
+        numberN.add();
+
+    }
+}
