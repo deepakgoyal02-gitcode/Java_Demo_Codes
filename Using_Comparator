@@ -1,0 +1,150 @@
+/////////////////////////////////////////////////////
+class myItem
+{
+    int itno;
+    String name;
+    int units;
+
+    myItem(){}
+
+    myItem(String name)
+    {
+        this.name = name;
+    }
+    myItem(int number, String name, int unit)
+    {
+        itno = number;
+        this.name = name;
+        units = unit;
+    }
+    void setItemNumber(int number)
+    {
+        itno = number;
+    }
+    void setItemName(String name)
+    {
+        this.name = name;
+    }
+    void setUnits(int unit)
+    {
+        units = unit;
+    }
+    void setObject(int number, String name, int unit)
+    {
+        itno = number;
+        this.name = name;
+        units = unit;
+    }
+    String getItemName()
+    {
+        return name;
+    }
+    int getUnits()
+    {
+        return units;
+    }
+    void show()
+    {
+
+        System.out.println(   "Item Number = " + itno
+                            + " Name  = " + name
+                            + " Units in Hand = " + units);
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class SortedMyItems {
+    public static void main(String[] args) {
+        //Comparator can be implemented in two ways
+        //1. either creating a dummy class and implementing Comparator and override compare() in this dummy class
+        //example itemsUsingComparator.java
+
+        //2. the other is below by creating an Anonymous interface in the main() method
+
+        //ANONYMOUS INTERFACE
+        Comparator<myItem> com = new Comparator<myItem>() {
+            @Override
+            //RETURN POSITIVE VALUE WILL SWAP AND RETURN NEGATIVE VALUE WILL NOT SWAP
+            public int compare(myItem o1, myItem o2) {
+                if(o1.getUnits() > o2.getUnits())
+                    return 1;
+                //if(o1.getUnits() > o2.getUnits())   ----- return +1
+                //meaning if o1 is more than o2 and I am swapping
+                //this means I want larger to go at the back
+                //also meaning natural sorted order is needed
+                else
+                    return -1;
+            }
+        };
+        List<myItem> itemsList = new ArrayList<>();
+        itemsList.add(new myItem(1,"APPLE",5));
+        itemsList.add(new myItem(1,"BANANA",6));
+        itemsList.add(new myItem(1,"CARROT",2));
+        itemsList.add(new myItem(1,"DRAGON FRUIT",100));
+
+        //this is using comparator by using anonymous interface implementation in main() method
+        //using items.units to sort
+        itemsList.sort(com);   //VALID SORTING
+
+       for(myItem it:itemsList)
+        {
+            System.out.println(it);
+        }
+
+        //Collections.sort(itemsList); //--> this will not work as for this to work
+        //class (items) of reference itemsList has to have interface Comparable (with method compareTo)
+        //below a new class is created and interface Comparable has been implemented
+        //hence Collections.sort(itemsUsingComparableList) will now work
+        //we could have just changed the original class items but I wanted to keep the code separate
+
+
+        //but if I still need to make this work I need to implement interface Comparator on a
+        //dummy comparator class. the implementation of method compare() of interface Comparator
+        //will provide the necessary logic for java to know how to sort
+        //So below will work now after class itemsUsingComparator.java is present in this package
+        //this class is implementing Comparator interface and there it specifies what needs to be compared
+        //which type of entity will be compared. In this case (items)
+
+        Collections.sort(itemsList,new myItemsUsingComparator());
+        //this is sorting based on items.itemName()
+
+        for(myItem it:itemsList)
+        {
+            System.out.println(it);
+        }
+        //DIFFERENCE between Comparator and Comparable interface is that
+        //In Comparable interface we can implement it on the same class whose sorting needs to be done
+        //that is the change has to be made in the original class itself.
+
+        //In Comparator interface, we can create a dummy class and implement Comparator interface in it
+        //we then use this dummy class reference and send pass it will list reference to the sort()
+        //method of Collections as above
+
+        //Comparator can be implemented in two ways
+        //1. either creating a dummy class and implementing Comparator and override compare() in this dummy class
+        //example itemsUsingComparator.java
+
+        //2. the other is below by creating an Anonymous interface in the main() method
+
+        List<myItemsUsingComparable> itemsUsingComparableList = new ArrayList<>();
+        itemsUsingComparableList.add(new myItemsUsingComparable(101,"APPLE",40));
+        itemsUsingComparableList.add(new myItemsUsingComparable(201,"CARROT",20));
+        itemsUsingComparableList.add(new myItemsUsingComparable(301,"BANANA",20));
+        itemsUsingComparableList.add(new myItemsUsingComparable(401,"DRAGON FRUIT",10));
+
+        Collections.sort(itemsUsingComparableList);  //VALID SORTING
+
+        for(myItemsUsingComparable it:itemsUsingComparableList)
+        {
+            System.out.println(it);
+        }
+    }
+}
