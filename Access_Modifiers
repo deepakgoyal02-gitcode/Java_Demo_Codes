@@ -1,0 +1,146 @@
+//PACKAGE 1
+package pack1;
+
+import pack2.alpha;
+//A member can be accessed in two ways.
+//1. By creating an object (for non-subclass)
+//2. By using it in another class whom have parent/child relationship (for subclass)
+//
+//A protected member is accessible in same-package subclass or non-subclass
+// and in different package subclass only, but NOT in different package non-subclass
+
+//A default(package-private) member is accessible in same package subclass or non-subclass
+// It is NOT accessible in different package either in subclass or non-subclass
+
+public class mat {
+    protected int one;
+    void show()
+    {
+        one = 10;
+        System.out.println("In class mat - variable one: " + one);
+    }
+}
+
+class mat2 extends mat
+{
+    int two;
+    void show()
+    {
+        super.show();
+        System.out.println("In class mat2 - variable two: " + two + " " + one);
+        //protected member "one"(of class "mat") accessible in same package subclass
+    }
+}
+class mat4 extends mat2
+{
+    void show()
+    {
+        System.out.println("In class mat4 - variable two: " + two + " " + one);
+        //protected member "one"(of class "mat") accessible in same package grand-child subclass
+    }
+}
+//To make class (eg alpha) of another package a parent in this package class (eg mat3)
+//alpha has to be made public otherwise it will not be accessible here
+class mat3 extends alpha
+{
+    int three;
+    void show()
+    {
+        System.out.println(three);
+        //In package pack2 class "alpha" has a default member (package-private) defaultTee
+        //even though "mat3" is a subclass of "alpha" the default members of "alpha"
+        //will not be accessible here as below
+        //System.out.println(defaultTee);
+    }
+}
+class MainMat
+{
+    public static void main(String[] args) {
+        mat objMat1 = new mat();
+        //protected member "one"(of class "mat") accessible in same package non-subclass (i.e. MainMat)
+        objMat1.one = 10;
+        mat2 objMat2 = new mat2();
+
+        //protected member "one"(of class "mat") accessible in same package non-subclass (i.e. MainMat)
+        objMat2.one = 10;
+
+        //class "mat2" has a default (package-private) member "two"
+        //and even though class "MainMat" is not a subclass of class mat2
+        //it is in the same package pack1 and hence is accessible via object reference here.
+        objMat2.two = 20;
+
+        mat3 myMat3 = new mat3();
+        myMat3.three = 50;
+        objMat2.show();
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+//PACKAGE 2
+package pack2;
+
+
+//A member can be accessed in two ways.
+//1. By creating an object
+//2. By using it in another class whom have parent/child relationship
+//
+ //A private member is accessible only within its own class
+
+import pack1.mat;
+
+public class alpha {
+    private int zed;
+    int defaultTee;
+    private void init()
+    {
+        zed = 10;
+    }
+    void show()
+    {
+        init();
+        System.out.println("In class Alpha - variable zed " + zed);
+    }
+}
+class alpha2 extends alpha
+{
+    int tee;
+    void show()
+    {
+        super.show();
+        System.out.println("In class Alpha2 - variable tee " + tee );
+    }
+}
+class alpha3 extends mat
+{
+    void show()
+    {
+        //protected member "one"(of class "mat") is accessible
+        //in different package "pack2" of subclass (i.e. alpha3)
+        System.out.println("In class Alpha3 - variable one " + one );
+
+    }
+}
+
+
+class MainAlpha
+{
+    public static void main(String[] args) {
+        mat objMat1 = new mat();
+
+        //protected member "one"(of class "mat") NOT accessible
+        //in different package "pack2" of non-subclass (i.e. MainAlpha)
+        //If I change the access of "one" to public in pack1 of class "mat"
+        //below will become accessible
+        //objMat1.one = 10;
+
+
+        alpha2 objAlpha2 = new alpha2();
+        //objAlpha2.zed = 27;
+        objAlpha2.tee = 22;
+        //objAlpha2.init();
+        objAlpha2.show();
+    }
+}
+
+
+
