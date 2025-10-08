@@ -1,3 +1,8 @@
+//The composition is achieved by using an instance variable that refers to other objects. 
+//If an object contains the other object and the contained object cannot exist without the existence of that object, 
+//then it is called composition.
+
+
 class Customer
 {
     private String name;
