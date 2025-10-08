@@ -1,0 +1,46 @@
+public class ArrayOfObjects {
+}
+
+class objectClass{
+    private int number;
+   private String name;
+    objectClass()
+    {
+
+    }
+    objectClass(int pNum, String pName)
+    {
+        number = pNum;
+        name = pName;
+    }
+    public void setNumber(int pNum)
+    {
+        number = pNum;
+
+    }
+    public int getNumber()
+    {
+        return number;
+    }
+    public String getName()
+    {
+        return name;
+    }
+}
+class Main{
+public static void main(String[] args) {
+
+    objectClass[] arrObj = new objectClass[2];
+
+    arrObj[0] = new objectClass(100,"ABC");
+    arrObj[1] = new objectClass(200,"DEF");
+
+    System.out.println(arrObj[0].getNumber());
+
+    arrObj[0].setNumber(700);
+
+    System.out.println(arrObj[0].getNumber());
+
+
+}
+}
