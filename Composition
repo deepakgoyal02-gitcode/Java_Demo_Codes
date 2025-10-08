@@ -1,0 +1,116 @@
+class Customer
+{
+    private String name;
+    private Address Address;
+
+    public Customer(String name, Address Address) {
+        this.name = name;
+        this.Address = Address;
+    }
+
+    public void setAddress(Address Address) { this.Address = Address; }
+
+    //public Address getAddress() { return Address; }
+
+    public String toString() { return name + " " + Address; }
+}
+
+class Address {
+    private String doorNo;
+    private String streetInfo;
+    private String city;
+    private String zipCode;
+
+    public Address(String doorNo, String streetInfo, String city, String zipCode) {
+        //super();
+        this.doorNo = doorNo;
+        this.streetInfo = streetInfo;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
+
+    public String toString() {
+        return doorNo + ", " + streetInfo + ", " + city + " - " + zipCode;
+    }
+
+}
+
+
+public class DemoOfComposition {
+    public static void main(String[] args) {
+//        for INHERITANCE
+//        Person person = new Person();
+//        person.setName("ABC");
+//        person.setEmail("abc@gmail.com");
+//        person.setPhoneNumber("1234567890");
+//        String personStr = person.toString();
+//        System.out.println(personStr);
+//        System.out.println(person);
+//        Customer customer = new Customer();
+
+        Address Address1 = new Address("House Number 15", "Society", "Noida", "201301");
+        //System.out.println(Address1);
+
+
+        Customer customer = new Customer("Customer1", Address1);
+        System.out.println(customer);
+//
+//        Address Address2 = new Address("Administrative Office", "Block 1", "Noida", "210300");
+//        customer.setAddress(Address2);
+//        System.out.println(customer);
+
+
+    }
+}
+/// ////////////////////////////////////
+
+class Person {
+    private String name;
+    private String email;
+    private String phoneNumber;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+}
+
+class Student extends Person {
+    private String collegeName;
+    private int year;
+
+    public void setCollegeName(String college) {
+        this.collegeName = collegeName;
+    }
+
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getYear() {
+        return year;
+    }
+}
