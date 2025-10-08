@@ -1,0 +1,229 @@
+class myItem
+{
+    int itno;
+    String name;
+    int units;
+
+    myItem(){}
+
+    myItem(String name)
+    {
+        this.name = name;
+    }
+    myItem(int number, String name, int unit)
+    {
+        itno = number;
+        this.name = name;
+        units = unit;
+    }
+    void setItemNumber(int number)
+    {
+        itno = number;
+    }
+    void setItemName(String name)
+    {
+        this.name = name;
+    }
+    void setUnits(int unit)
+    {
+        units = unit;
+    }
+    void setObject(int number, String name, int unit)
+    {
+        itno = number;
+        this.name = name;
+        units = unit;
+    }
+    String getItemName()
+    {
+        return name;
+    }
+    int getUnits()
+    {
+        return units;
+    }
+    void show()
+    {
+
+        System.out.println(   "Item Number = " + itno
+                            + " Name  = " + name
+                            + " Units in Hand = " + units);
+    }
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+public class myItemsUsingComparable implements Comparable<myItemsUsingComparable> {
+    private int itemNumber;
+    private String itemName;
+    private int units;
+
+    public myItemsUsingComparable() {    }
+
+    myItemsUsingComparable(int itemNumber, String itemName, int units){
+        this.itemNumber = itemNumber;
+        this.itemName = itemName;
+        this.units = units;
+    }
+
+    void setObject(int itemNumber,String itemName,int units){
+        this.itemNumber = itemNumber;
+        this.itemName = itemName;
+        this.units = units;
+    }
+
+    void setItemNumber(int itemNumber)
+    {  this.itemNumber = itemNumber;  }
+
+    void setItemName(String itemName)
+    {  this.itemName = itemName;    }
+
+    void setUnits(int units)
+    {  this.units = units;    }
+
+
+    int getUnits(){
+        return units;
+    }
+
+    void getData(int it,String n,int u)
+    {
+        itemNumber = it;
+        itemName = n;
+        units = u;
+    }
+    void show()
+    {
+        System.out.println( itemNumber+" "+ itemName+" "+units);
+    }
+    void show(int pItemNumber, String pName,int pUnit)
+    {
+        System.out.println(pItemNumber+" "+pName+" "+pUnit);
+    }
+    @Override
+    public String toString()
+    {
+        return "[" + itemNumber + " " + itemName + " " + units + "]";
+    }
+
+    @Override
+    public int compareTo(myItemsUsingComparable o) {
+        //RETURN POSITIVE VALUE WILL SWAP AND RETURN NEGATIVE VALUE WILL NOT SWAP
+        if(this.units > o.units)
+            return 1;
+        if(this.units == o.units)
+        {
+            this.itemName.compareTo(o.itemName);
+        }
+//        if(this.units < o.units)
+//            return -1;
+
+        return -1;
+        //if(this.units < o.units))   ----- return +1
+        //meaning if this.units is more than o.units and I am swapping
+        //it means I want larger element to go at the back
+        //also meaning natural sorted order is needed
+
+        //if units are equal then check which string is bigger by calling compareTo() method of String Class
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////
+import java.util.Arrays;
+//Abstraction
+//Encapsulation
+//Inheritance
+//Polymorphism
+
+//Sorting Techniques
+//Quick
+//Merge
+//Bubble
+//Selection
+//Insertion
+
+class myItemsMain
+{
+    public static void main(String[] args) {
+
+
+        myItem itemObject1 = new myItem("Initial Values");
+        //System.out.println(itemObject1);
+
+        myItem itemObject2 = new myItem();
+        itemObject2.setObject(200,"Two",20);
+
+        int value1= 300;
+        String value2 = "Three";
+        int value3 = 30;
+        myItem itemObject3 = new myItem(value1,value2,value3);
+
+        myItem itemObject4 = new myItem();
+
+        itemObject4.setItemNumber(400);
+        itemObject4.setItemName("Four");
+        itemObject4.setUnits(40);
+
+        //items[] arrayOfObjects;
+        //itemsArray = new items[4];
+        myItem[] arrayOfObjects = new myItem[]{itemObject1,itemObject2,itemObject3,itemObject4};
+        arrayOfObjects[0] = itemObject1;
+        arrayOfObjects[1] = itemObject2;
+        arrayOfObjects[2] = itemObject3;
+        arrayOfObjects[3] = itemObject4;
+
+        //Arrays.sort(arrayOfObjects); //----->this will give run time exception
+        //because arrayOfObjects for sort should be an array of PRE-DEFINED types like int or Integer
+        //it cannot sort arrays having Object references in them
+        //to make it possible Java needs to know how to make the sorting of the object
+        //for this Comparable interface has to be implemented by the USER-DEFINED class ((items) in this case))
+        //itemsUsingComparable below does that so here Arrays.sort(itemsObject) will work
+        //Comparable interface has method compareTo() which needs to be implemented for sort to work
+        //we could have just changed the original class items but I wanted to keep the code separate
+        //FOR COLLECTION (like ArrayList and LinkedList) sorting see SortedItems.java in this project
+        System.out.println(Arrays.toString(arrayOfObjects));
+
+
+        myItemsUsingComparable[] itemsObject =
+                new myItemsUsingComparable[]
+                        {
+                                  new myItemsUsingComparable(101, "APPLE", 40)
+                                , new myItemsUsingComparable(201, "BANANA", 30)
+                                , new myItemsUsingComparable(301, "CARROT", 20)
+                                , new myItemsUsingComparable(401, "DRAGON FRUIT", 10)
+                        };
+
+        Arrays.sort(itemsObject);
+        System.out.println(Arrays.toString(itemsObject));
+
+//        items[] arrayOfObjects1 = {new items("Initial Values"),new items(),new items(value1,value2,value3),new items()};
+//        arrayOfObjects1[1].setObject(200,"Two",20);
+//
+//        arrayOfObjects1[3].setItemNumber(400);
+//        arrayOfObjects1[3].setItemName("Four");
+//        arrayOfObjects1[3].setUnits(40);
+
+          //TRADITIONAL TRAVERSAL OF ARRAY OF OBJECTS
+//        int i=0;
+//        while(i<4)
+//        {
+//            System.out.print(arrayOfObjects[i]);
+//            i++;
+//        }
+//        System.out.println();
+
+
+
+
+          //ENHANCED FOR LOOP TO TRAVERSE LISTS
+//        for(items it:arrayOfObjects)
+//        {
+//            System.out.println(it);
+//        }
+
+    }
+}
+
+
+
