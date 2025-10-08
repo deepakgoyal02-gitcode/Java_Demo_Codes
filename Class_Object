@@ -1,0 +1,46 @@
+class BankAccount {
+    int accountNumber;
+    String accountHolderName;
+    double balance;
+
+    void initialize(int pANo, String pAHN, double pInitBal)
+    {
+        accountNumber = pANo;
+        accountHolderName = pAHN;
+        if(pInitBal<0)
+        {
+            System.out.println("Invalid Initial Balance");
+            return;
+        }
+        balance = pInitBal;
+    }
+    void deposit(double aToAdd)
+    {
+        if(aToAdd > 0)
+            balance = balance + aToAdd;
+    }
+    void withdraw(double sAmt)
+    {
+                if((sAmt > 0) && (balance >= sAmt))
+                    balance = balance - sAmt;
+                else
+                    System.out.println("Unable to withdraw. Insufficient Balance");
+    }
+    void displayAccountInfo()
+    {
+        System.out.println( " Account Number = " + accountNumber + "\n" +
+                            " Account Holder Name = " + accountHolderName + "\n" +
+                            " Current Balance = " + balance);
+    }
+}
+class DemoOfClass
+{
+    public static void main(String[] args)
+    {
+        BankAccount account1 = new BankAccount();
+        account1.initialize(2375,"MyAntiBugCat",1000);
+        account1.deposit(-100);
+        account1.withdraw(1100);
+        account1.displayAccountInfo();
+    }
+}
