@@ -62,3 +62,45 @@ class runMain {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+
+//interface Area {
+//    void triangle(int x, int y);
+//}
+//
+//interface Area2 {
+//    void rectangle(int l, int b);
+//}
+//
+//interface Area3 {
+//    void square(int a);
+//
+//}
+//class Triangle implements Area{
+//    @Override
+//    public void triangle(int x, int y) {
+//        double area= 0.5 * x * y;;
+//        System.out.println(area);
+//    }
+//}
+//class Rectangle implements Area2 {
+//    @Override
+//    public void rectangle(int l, int b) {
+//        int area = l * b;
+//        System.out.println(area);
+//    }
+//}
+//class Square implements Area3{
+//    @Override
+//    public void square(int a) {
+//        int area=a*a;
+//        System.out.println(area);
+//    }
+//}
+//class main {//extends InterfaceDemo {
+//    public static void main(String[] args) {
+//        Triangle tri= new Triangle();
+//        tri.triangle(10,20);
+//    }
+//}
+
